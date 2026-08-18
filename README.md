@@ -7,7 +7,7 @@ _code_ and _data_ of the project are listed in their corresponding folders
    -> Acquire environmental predictors including Macroclimate (Macro_Bio05, Macro_Bio06, Macro_SMmax, Macro_SMmin), Macroclimate-based Climatic Position (Macro_CP) and Land cover
    -> Acquire thinned presence and absence records of one of the focal species. Ready for extracting Microclimate and Microclimate-based CP
 2. Rscript HPC/_MicroBioclim_Final.R_
-   -> Collect dtm, vegetation, soil information and local weather data, parallelly run on HPC. These input variables can be used to run the _runbioclim()_ model, and then microclimate data of each species is acquired (Micro_Bio05, Micro_Bio06, Micro_SMmax, Micro_SMmin)
+   -> Collect dtm, vegetation, soil information and local weather data, parallelly run on HPC (bash: qsub _run_chunk.pbs_). These input variables can be used to run the _runbioclim()_ model, and then microclimate data of each species is acquired (Micro_Bio05, Micro_Bio06, Micro_SMmax, Micro_SMmin)
 3. Rscript Code/_microcp_finalmerge.R_
    -> Integrate the Micro and Macro datasets for the complete input variables for the Species Distribution Modelling
 4. Rscript Code/_Spatial_Correlation.R_
