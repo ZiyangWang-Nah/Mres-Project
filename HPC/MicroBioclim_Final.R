@@ -1,6 +1,4 @@
-# =========================================================
-# 0) PACKAGES
-# =========================================================
+# PACKAGES
 library(data.table)
 library(dplyr)
 library(lubridate)
@@ -12,12 +10,7 @@ library(ncdf4)
 library(mcera5)
 library(microclimdata)
 
-
-# =========================================================
-# 1) INPUT POINTS
-#    required columns: lon, lat, pa
-#    optional: id
-# =========================================================
+# INPUT POINTS
 pts <- fread("../data/points_climate_Pitangus_sulphuratus.csv")   # Species are replaceable here
 
 stopifnot(all(c("lon","lat","pa") %in% names(pts)))
@@ -42,10 +35,7 @@ end_idx <- min(end_idx, nrow(pts))
 
 pts <- pts[start_idx:end_idx, ]
 
-# =========================================================
-# 3) FUNCTION: your single-point microclimate pipeline and its prerequisites 
-# =========================================================
-
+# FUNCTION: your single-point microclimate pipeline and its prerequisites 
 # data Preparation for run_one_point_pipeline()
 landcover <- rast("../data/ESACCI-LC-L4-LCCS-Map-300m-P1Y-2000-v2.0.7.tif") 
 soil_type_master <- rast("../data/soil_master/neotrop_soil_type_500m.tif")
@@ -489,9 +479,7 @@ run_one_point <- function(id, lon, lat, pa, custom_temp) {
   return(out)
 }
 
-# =========================================================
-# 5) CHUNKING (200 points per task)
-# =========================================================
+# CHUNKING (200 points per task)
 chunk_size <- 200L
 pts$chunk_id <- ((seq_len(nrow(pts)) - 1L) %/% chunk_size) + 1L
 chunks <- split(pts, pts$chunk_id)
@@ -537,10 +525,7 @@ run_chunk <- function(df_chunk, out_file) {
   return(out_file)
 }
 
-# =========================================================
-# 6) PARELLEL RUN ()
-# =========================================================
-
+# PARELLEL RUN ()
 args <- commandArgs(trailingOnly = TRUE)
 
 if (length(args) == 0) {
@@ -559,9 +544,7 @@ if (!file.exists(out_file)) {
 
 message("Done! Output saved to: ", out_file)
 
-# # =========================================================
-# # 7) MERGE ALL POINT RESULTS (Excecute the section after points of the species are all finished)
-# # # =========================================================
+# # MERGE ALL POINT RESULTS (Excecute the section after points of the species are all finished)
 # files <- list.files("../result/chunk_outputs", pattern = "^batch_\\d+_\\d+_chunk_\\d+\\.csv$", full.names = TRUE)
 # 
 # all_res <- rbindlist(lapply(files, fread), fill = TRUE)
