@@ -1,6 +1,14 @@
 # Mres-Project
-Data and code archives for Mres Project of Mres programme: Living Planet with Computationel Methods in Ecology and Evolution
-_code_ and _data_ of the project are listed in their corresponding folders
+Data and code archives for Mres Project of Mres programme: Living Planet with Computationel Methods in Ecology and Evolution  
+_code_ of the project are listed in their corresponding folders<br> 
+_data_ of the project can be downloaded from the following link:<br>
+data/Land Cover: https://maps.elie.ucl.ac.be/CCI/viewer/download.php<br>
+data/Macroclimate/chelsa02: https://envicloud.wsl.ch/#/?bucket=https%3A%2F%2Fos.unil.cloud.switch.ch%2Fchelsa02%2F&prefix=chelsa%2Fglobal%2Fbioclim%2F<br>
+data/Macroclimate/ERA5: https://cds.climate.copernicus.eu/datasets/reanalysis-era5-land?tab=overview<br>
+data/Microclimate(weather data): https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=overview<br>
+data/Microclimate/MOD15A2H_061-20260520_184007: https://www.earthdata.nasa.gov/data/catalog/lpcloud-mod15a2h-006<br>
+data/Microclimate/MCD43A3_061-20260607_163715: https://www.earthdata.nasa.gov/data/catalog/lpcloud-mcd43a3-006<br>
+data/occurrence: https://www.gbif.org/occurrence/search?occurrenceStatus=present
 
 # Data collection, analysis and modelling (Workflow)
 1. Rscript Code/_Model_Input_Prepare_except_Micro.R_
