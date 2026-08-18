@@ -1,29 +1,23 @@
 #!/bin/bash
-# =========================================================
-# 帝国理工 HPC 任务配置
-# =========================================================
 #PBS -lselect=1:ncpus=1:mem=16gb
 #PBS -lwalltime=72:00:00
 #PBS -J 1-15
 #PBS -N Micro_Final
 
-# 更改下方路径为你自己的帝国理工用户名，用于保存日志
+# Specify the log path
 #PBS -o /rds/general/user/zw2425/home/Paper9/log/
 #PBS -e /rds/general/user/zw2425/home/Paper9/log/
 
-# 自动切换到你运行 qsub 命令时所在的目录
+# Switch to the working dir
 cd $PBS_O_WORKDIR
 
-# ==========================================
-# 核心：初始化并激活你的个人 Conda 环境
-# ==========================================
-# 初始化 conda 命令行工具
+# Source my conda env
 source /rds/general/user/zw2425/home/miniforge3/etc/profile.d/conda.sh
 
-# 激活你配置好的 R 环境
+# Activate the R env preset before
 conda activate r441
 
-# 运行你的 R 脚本
+# Rscript
 echo "Running chunk ${PBS_ARRAY_INDEX} at $(date)"
 
 Rscript MicroBioclim_Final.R ${PBS_ARRAY_INDEX}
